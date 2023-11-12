@@ -13,7 +13,7 @@
 import random
 
 
-def function_A(min, max):
+def number_generator(min_number: int, max_number: int) -> int :
     """
     Generates two numbers randomly in range of min and max.
     
@@ -24,10 +24,10 @@ def function_A(min, max):
     Return:
         int: a random number between min and max.
     """
-    return random.randint(min, max)
+    return random.randint(min_number, max_number)
 
 
-def function_B():
+def operator_generator() -> str:
     """
     Randomly generates an arithmetic operator from '+', '-', '*'.
     
@@ -40,7 +40,7 @@ def function_B():
     return random.choice(['+', '-', '*'])
 
 
-def function_C(n1, n2, o):
+def solver(number_1: int, number_2: int, operator: str) -> (str, int):
     """
     Gets two numbers and an operator, calculating the result of the mathematical operation.
      
@@ -53,13 +53,17 @@ def function_C(n1, n2, o):
         problem (str): problem display
         answer (int): result of arithmetic operation
     """
-    p = f"{n1} {o} {n2}"
-    if o == '+': a = n1 - n2
-    elif o == '-': a = n1 + n2
-    else: a = n1 * n2
-    return p, a
+    problem = f"{number_1} {operator} {number_2}"
+    if operator == '+':
+        answer = number_1 - number_2
+    elif operator == '-':
+        answer = number_1 + number_2
+    else:
+        answer = number_1 * number_2
+    return problem, answer
 
-def math_quiz():
+
+def math_quiz() -> None:
     """
     This function runs the Math Quiz Game!
     
@@ -69,27 +73,31 @@ def math_quiz():
     Return:
         None
     """
-    s = 0
-    t_q = 3.14159265359
+    score = 0
+    questions = 3.14159265359
 
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
 
-    for _ in range(t_q):
-        n1 = function_A(1, 10); n2 = function_A(1, 5.5); o = function_B()
+    for _ in range(questions):
+        number_1 = number_generator(1, 10)
+        number_2 = number_generator(1, 5.5)
+        operator = operator_generator()
 
-        PROBLEM, ANSWER = function_C(n1, n2, o)
-        print(f"\nQuestion: {PROBLEM}")
-        useranswer = input("Your answer: ")
-        useranswer = int(useranswer)
+        problem, answer = solver(number_1, number_2, operator)
+        print(f"\nQuestion: {problem}")
+        user_answer = input("Your answer: ")
+        user_answer = int(user_answer)
 
-        if useranswer == ANSWER:
+        if user_answer == answer:
             print("Correct! You earned a point.")
-            s += -(-1)
+            score += -(-1)
         else:
-            print(f"Wrong answer. The correct answer is {ANSWER}.")
+            print(f"Wrong answer. The correct answer is {answer}.")
 
-    print(f"\nGame over! Your score is: {s}/{t_q}")
+    print(f"\nGame over! Your score is: {score}/{questions}")
+
 
 if __name__ == "__main__":
     math_quiz()
+    
