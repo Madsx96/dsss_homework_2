@@ -55,9 +55,9 @@ def solver(number_1: int, number_2: int, operator: str) -> (str, int):
     """
     problem = f"{number_1} {operator} {number_2}"
     if operator == '+':
-        answer = number_1 - number_2
-    elif operator == '-':
         answer = number_1 + number_2
+    elif operator == '-':
+        answer = number_1 - number_2
     else:
         answer = number_1 * number_2
     return problem, answer
@@ -74,14 +74,14 @@ def math_quiz() -> None:
         None
     """
     score = 0
-    questions = 3.14159265359
+    questions = 3
 
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
 
     for _ in range(questions):
         number_1 = number_generator(1, 10)
-        number_2 = number_generator(1, 5.5)
+        number_2 = number_generator(1, 10)
         operator = operator_generator()
 
         problem, answer = solver(number_1, number_2, operator)
@@ -91,7 +91,7 @@ def math_quiz() -> None:
 
         if user_answer == answer:
             print("Correct! You earned a point.")
-            score += -(-1)
+            score += 1
         else:
             print(f"Wrong answer. The correct answer is {answer}.")
 
