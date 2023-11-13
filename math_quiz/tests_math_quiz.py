@@ -1,11 +1,12 @@
-"""----------------------------------------------------------------------------------------------
+"""
+--------------------------------------------------------------------------
  Name:          test_math_quiz.py
  Purpose:       This script contains unit tests for the Math Quiz Game,
  Modified by:   Mohammad Ali Karimi (mohammadali.karimi@fau.de)
  Interpreter:   PYTHON version 3.11.5
  Created:       2023/11/13
  Licence:       Apache 2.0
-----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------
 """
 
 
@@ -27,7 +28,7 @@ class TestMathGame(unittest.TestCase):
             rand_num = number_generator(min_val, max_val)
             self.assertTrue(min_val <= rand_num <= max_val)
             
-            
+                               
     def test_operator_generator(self):
         """
         test if random operator generated is one of +/-/*
