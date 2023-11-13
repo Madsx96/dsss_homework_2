@@ -1,5 +1,4 @@
-"""
------------------------------------------------------------------------------
+"""----------------------------------------------------------------------------------------------
  Name:          math_quiz.py
  Purpose:       This script is a Math Quiz Game which user should answer a number of
                 simple arithmetic math questions and eventually it gives out a score.
@@ -7,7 +6,7 @@
  Interpreter:   PYTHON version 3.11.5
  Created:       2023/11/12
  Licence:       Apache 2.0
------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 """
 
 import random
@@ -24,6 +23,7 @@ def number_generator(min_number: int, max_number: int) -> int :
     Return:
         int: a random number between min and max.
     """
+    # creates a random integer which will be used for two numbers in math questions
     return random.randint(min_number, max_number)
 
 
@@ -37,6 +37,7 @@ def operator_generator() -> str:
     Return:
         str: a random arithmetic operator.
     """
+    # creates a random arithmetic operation which will be used in math problem
     return random.choice(['+', '-', '*'])
 
 
@@ -74,30 +75,36 @@ def math_quiz() -> None:
         None
     """
     score = 0
-    questions = 3
-
+    total_questions = 3
+    
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
 
-    for _ in range(questions):
+    for _ in range(total_questions):
         number_1 = number_generator(1, 10)
         number_2 = number_generator(1, 10)
         operator = operator_generator()
 
         problem, answer = solver(number_1, number_2, operator)
         print(f"\nQuestion: {problem}")
-        user_answer = input("Your answer: ")
-        user_answer = int(user_answer)
-
+        
+        # this loop prevents user to input any other data type but integer. this is because an integer is only valid for the answer of this mathematical question.
+        while True:
+            try:
+                user_answer = int(input("Your answer: "))
+            except ValueError:
+                print("Please enter an integer number!")
+                continue
+            break
         if user_answer == answer:
             print("Correct! You earned a point.")
             score += 1
         else:
             print(f"Wrong answer. The correct answer is {answer}.")
 
-    print(f"\nGame over! Your score is: {score}/{questions}")
+    print(f"\nGame over! Your score is: {score}/{total_questions}")
 
-
-if __name__ == "__main__":
+# checks whether the Python script is being run as the main program
+if __name__ == "__main__": 
     math_quiz()
     
