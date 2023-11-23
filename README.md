@@ -6,6 +6,6 @@
                 there is also a unit test file in test_math_quiz.py to test different methods of
                 math_quiz.py
  Modified by:   Mohammad Ali Karimi (mohammadali.karimi@fau.de)
- Interpreter:   PYTHON version 3.11.5
+ Interpreter:   Python version 3.11.5
  Created:       2023/11/12
  Licence:       Apache 2.0
